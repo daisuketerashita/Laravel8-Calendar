@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ScheduleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +21,10 @@ Route::get('/', function () {
 Route::get('/calendar',function(){
     return view('calendar');
 });
+
+// イベント登録処理
+Route::get('/calendar/{id}',[ScheduleController::class,'add'])->name('add');
+Route::post('/calendar/{id}',[ScheduleController::class,'store'])->name('store');
 
 Auth::routes();
 
